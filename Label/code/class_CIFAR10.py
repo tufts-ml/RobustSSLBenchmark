@@ -29,10 +29,10 @@ from LAMDA_SSL.Opitimizer.SGD import SGD
 from LAMDA_SSL.Scheduler.CosineWarmup import CosineWarmup
 from LAMDA_SSL.Algorithm.Classification.FixMatch import FixMatch
 from LAMDA_SSL.Dataset.Vision.CIFAR10 import CIFAR10
-from ImageCLEF import ImageCLEF
-from Office31 import Office31
+from LAMDA_SSL.Dataset.Vision.ImageCLEF import ImageCLEF
+from LAMDA_SSL.Dataset.Vision.Office31 import Office31
+from LAMDA_SSL.Dataset.Vision.VisDA import VisDA
 from math import ceil
-from VisDA import VisDA
 import torch
 import random
 import os
@@ -90,18 +90,18 @@ def worker_init(worked_id):
     np.random.seed(worker_seed)
     random.seed(worker_seed)
 
-        if dataset == 'Office-31':
-            source_dataset = Office31(root=root, domain=source)
-            target_dataset = Office31(root=root, domain=target)
-            num_classes = 31
-        elif dataset == 'image-CLEF':
-            source_dataset = ImageCLEF(root=root, domain=source)
-            target_dataset = ImageCLEF(root=root, domain=target)
-            num_classes = 12
-        else:
-            source_dataset = VisDA(root=root, domain=source)
-            target_dataset = VisDA(root=root, domain=target)
-            num_classes = 12
+        # if dataset == 'Office-31':
+        #     source_dataset = Office31(root=root, domain=source)
+        #     target_dataset = Office31(root=root, domain=target)
+        #     num_classes = 31
+        # elif dataset == 'image-CLEF':
+        #     source_dataset = ImageCLEF(root=root, domain=source)
+        #     target_dataset = ImageCLEF(root=root, domain=target)
+        #     num_classes = 12
+        # else:
+        #     source_dataset = VisDA(root=root, domain=source)
+        #     target_dataset = VisDA(root=root, domain=target)
+        #     num_classes = 12
 dataset=CIFAR10(root=root,labeled_size=None,stratified=False,shuffle=False,download=True,default_transforms=True)
 num_classes=10
 for rate in rate_list:
