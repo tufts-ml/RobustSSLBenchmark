@@ -1,0 +1,5 @@
+{
+    "python.autoComplete.extraPaths": [
+        "submodules/LAMDA-SSL/LAMDA_SSL"
+    ]
+}
